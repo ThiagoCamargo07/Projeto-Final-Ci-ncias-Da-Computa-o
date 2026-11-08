@@ -1,0 +1,26 @@
+ENTREGA FINAL – CIÊNCIA DA COMPUTAÇÃO (UNINOVE, 2026)
+Aluno: Thiago Ferreira Camargo – RA 323100646
+Curso: Ciência da Computação – Campus Memorial América Latina – Série 08, Turma A, noturno
+Orientador: Prof. Dr. Wanderley da Silva Junior
+Projeto: Do requisito ao deploy – guia prático do ciclo completo de desenvolvimento de um sistema
+
+ORDEM DE LEITURA
+
+Do_Requisito_ao_Deploy:
+
+  01 TAP – Termo de Abertura de Projeto ............ planejamento, escopo, cronograma e riscos
+  02 Ata Mensal 01 (24/10/2026) .................... acompanhamento da Sprint 1
+  03 Documento do Projeto de Desenvolvimento ....... o guia: 11 etapas, do requisito ao deploy
+  04 Relatório Final do Projeto .................... resultados, atividades e conclusão
+  05 Banner 90 x 120 cm (PowerPoint e PDF) ......... apresentação visual do projeto
+
+Barbearia_Pente_Fino:
+
+  06 Documentação do Sistema ....................... o guia aplicado a um site real, etapa por etapa
+  07 Código-fonte (zip, repositório Git) ........... site em HTML, CSS e JavaScript, testes e CI/CD
+       Para ver o site: descompactar e abrir barbearia/site/index.html no navegador.
+       Para rodar os testes: Node.js 18+ e o comando "npm test" dentro da pasta barbearia.
+
+OBSERVAÇÕES
+- A Barbearia Pente Fino e a empresa do estudo de caso do guia são fictícias; dados e preços são ilustrativos.
+- Resultados verificados: 19 testes unitários e 33 verificações de ponta a ponta, todos aprovados.

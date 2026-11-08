@@ -1,0 +1,8 @@
+stateDiagram-v2
+direction LR
+[*] --> Confirmado : cliente confirma (RN01–RN04, RN07)
+Confirmado --> Cancelado : cliente cancela até 2 h antes (RN05)
+Confirmado --> Realizado : data e hora passam
+Cancelado --> [*]
+Realizado --> [*]
+note right of Cancelado : o horário volta a ficar livre

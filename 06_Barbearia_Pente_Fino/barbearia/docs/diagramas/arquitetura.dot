@@ -1,0 +1,15 @@
+digraph A { rankdir=TB; bgcolor=white; nodesep=0.35; ranksep=0.45; fontname="Helvetica";
+node [shape=box style="rounded,filled" fontname="Helvetica" fontsize=11 fillcolor="#E3EFEA" color="#1E4D3F" width=2.6]; edge [color="#333333" fontname="Helvetica" fontsize=9];
+user [label="Cliente (navegador no celular ou computador)" fillcolor="#FFF4D6" color="#8A6D1F" width=4];
+subgraph cluster_n { label="Navegador do cliente"; style=rounded; color="#1E4D3F"; fontsize=11;
+ html [label="index.html + estilo.css\n(estrutura e aparência)"];
+ app [label="app.js\nCamada de apresentação\n(tela e eventos)"];
+ regras [label="agenda.js\nRegras de negócio\n(funções puras, testadas)"];
+ dados [label="dados.js\nConfiguração\n(serviços, barbeiros, horários)"];
+ repo [label="armazenamento.js\nRepositório"];
+ ls [label="localStorage\n(dados do agendamento)" shape=cylinder fillcolor="#F0F0F0" color="#555555"];
+}
+host [label="GitHub Pages (HTTPS)\nhospeda os arquivos estáticos" fillcolor="#F0F0F0" color="#555555" width=4];
+user->html; html->app; app->regras; app->dados; regras->dados [style=dashed label=" lê regras"]; app->repo; repo->ls;
+host->html [label=" entrega os arquivos" style=dashed];
+}

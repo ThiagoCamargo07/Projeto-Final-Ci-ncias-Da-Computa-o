@@ -1,0 +1,4 @@
+Lora (arquivo original, sem modificações) — usada nos títulos do site.
+Copyright 2011 The Lora Project Authors (https://github.com/cyrealtype/Lora-Cyrillic),
+with Reserved Font Name "Lora".
+Licenciada sob a SIL Open Font License, Versão 1.1: https://openfontlicense.org

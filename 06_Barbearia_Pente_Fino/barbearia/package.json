@@ -1,0 +1,12 @@
+{
+  "name": "barbearia-pente-fino",
+  "version": "1.0.0",
+  "description": "Site acadêmico de agendamento da Barbearia Pente Fino (fictícia) — aplicação prática do guia Do Requisito ao Deploy.",
+  "private": true,
+  "scripts": {
+    "test": "node --test",
+    "start": "python3 -m http.server 8000 --directory site"
+  },
+  "author": "Thiago Ferreira Camargo",
+  "license": "MIT"
+}

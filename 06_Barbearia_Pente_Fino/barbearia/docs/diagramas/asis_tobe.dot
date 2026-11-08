@@ -1,0 +1,19 @@
+digraph P { rankdir=TB; newrank=true; bgcolor=white; nodesep=0.3; ranksep=0.45; fontname="Helvetica";
+node [shape=box style="rounded,filled" fontname="Helvetica" fontsize=11]; edge [color="#333333" fontname="Helvetica" fontsize=9];
+subgraph cluster_a { label="AS-IS (hoje)"; style=rounded; color="#8A1F1F"; fontsize=12;
+ a1 [label="Cliente liga ou manda\nmensagem no WhatsApp" fillcolor="#FBE3E3" color="#8A1F1F"];
+ a2 [label="Barbeiro para o corte\npara responder" fillcolor="#FBE3E3" color="#8A1F1F"];
+ a3 [label="Consulta o caderno\nde agenda" fillcolor="#FBE3E3" color="#8A1F1F"];
+ a4 [label="Negocia horário\n(vai e volta de mensagens)" fillcolor="#FBE3E3" color="#8A1F1F"];
+ a5 [label="Anota à mão\n(risco de conflito)" fillcolor="#FBE3E3" color="#8A1F1F"];
+ {rank=same; a1; a2; a3; a4; a5;} a1->a2->a3->a4->a5;
+}
+subgraph cluster_b { label="TO-BE (com o site)"; style=rounded; color="#1E4D3F"; fontsize=12;
+ b1 [label="Cliente abre o site\n(qualquer hora)" fillcolor="#E3EFEA" color="#1E4D3F"];
+ b2 [label="Escolhe serviço\ne barbeiro" fillcolor="#E3EFEA" color="#1E4D3F"];
+ b3 [label="Vê só horários livres\n(regras aplicadas)" fillcolor="#E3EFEA" color="#1E4D3F"];
+ b4 [label="Confirma e recebe\ncódigo + calendário" fillcolor="#E3EFEA" color="#1E4D3F"];
+ {rank=same; b1; b2; b3; b4;} b1->b2->b3->b4;
+}
+a1->b1 [style=invis];
+}

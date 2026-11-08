@@ -1,0 +1,27 @@
+sequenceDiagram
+autonumber
+actor C as Cliente
+participant T as app.js (tela)
+participant R as agenda.js (regras)
+participant P as armazenamento.js
+participant L as localStorage
+C->>T: escolhe serviço, barbeiro e dia
+T->>P: carregar()
+P->>L: getItem(chave)
+L-->>P: agendamentos (JSON)
+T->>R: horariosDisponiveis(...)
+R-->>T: lista de horários livres
+T-->>C: mostra os horários
+C->>T: escolhe horário, preenche dados e confirma
+T->>R: validarAgendamento(pedido)
+alt pedido inválido
+  R-->>T: erros por campo
+  T-->>C: mensagens ao lado de cada campo
+else pedido válido
+  R-->>T: ok
+  T->>R: criarAgendamento(pedido)
+  R-->>T: agendamento com código PF-XXXX
+  T->>P: adicionar(agendamento)
+  P->>L: setItem(chave, lista)
+  T-->>C: confirmação + .ics + WhatsApp
+end

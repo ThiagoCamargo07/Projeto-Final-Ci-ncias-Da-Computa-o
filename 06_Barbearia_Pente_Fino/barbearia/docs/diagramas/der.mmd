@@ -1,0 +1,28 @@
+erDiagram
+SERVICO ||--o{ AGENDAMENTO : "é reservado em"
+BARBEIRO ||--o{ AGENDAMENTO : "atende"
+BARBEIRO ||--o{ FOLGA : "tem"
+SERVICO { string id PK
+  string nome
+  int duracao_min
+  decimal preco }
+BARBEIRO { string id PK
+  string nome
+  string especialidade }
+FOLGA { string barbeiro_id FK
+  int dia_semana }
+EXPEDIENTE { int dia_semana PK
+  time abre
+  time fecha }
+AGENDAMENTO { string codigo PK
+  string servico_id FK
+  string barbeiro_id FK
+  date data
+  time hora
+  int duracao_min
+  decimal preco
+  string cliente_nome
+  string cliente_telefone
+  string status
+  datetime criado_em
+  datetime cancelado_em }

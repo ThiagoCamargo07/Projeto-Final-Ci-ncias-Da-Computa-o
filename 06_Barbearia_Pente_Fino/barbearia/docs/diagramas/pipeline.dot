@@ -1,0 +1,9 @@
+digraph P { bgcolor=white; splines=true;
+node [shape=box style="rounded,filled" fillcolor="#E3EFEA" color="#1E4D3F" fontname="Helvetica" fontsize=10 width=1.7 height=0.65 fixedsize=true]; edge [color="#333333" fontname="Helvetica" fontsize=9];
+a [label="Commit na\nbranch feature/*" pos="0,1.6!"]; b [label="Pull Request\npara main" pos="2.3,1.6!"];
+c [label="CI: npm test\n(19 testes)" shape=diamond fillcolor="#FFF4D6" color="#8A6D1F" width=2 height=1 pos="4.7,1.6!"];
+d [label="Merge na main" pos="7.1,1.6!"]; e [label="Deploy: testes +\nupload de site/" pos="7.1,0!"];
+f [label="GitHub Pages\n(produção, HTTPS)" fillcolor="#D6E9D6" color="#2E6B2E" pos="4.7,0!"];
+g [label="Rollback:\ngit revert + push" fillcolor="#FBE3E3" color="#8A1F1F" pos="2.3,0!"];
+a->b->c; c->d [label="passou"]; c->a [label="falhou" style=dashed]; d->e->f; f->g [label="problema" style=dashed]; g->e [style=dashed constraint=false];
+}

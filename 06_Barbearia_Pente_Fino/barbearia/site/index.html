@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Barbearia Pente Fino – agende seu horário</title>
+  <meta name="description" content="Barbearia Pente Fino (fictícia): serviços, preços e agendamento online. Projeto acadêmico.">
+  <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body>
+  <a class="pular" href="#agendar">Pular para o agendamento</a>
+
+  <header class="topo">
+    <div class="topo__marca">
+      <svg class="poste" viewBox="0 0 24 64" aria-hidden="true"><rect x="5" y="4" width="14" height="56" rx="7" fill="#F4F5F0" stroke="#B8893B" stroke-width="2"/><path d="M5 14 19 6M5 26 19 18M5 38 19 30M5 50 19 42M5 62 19 54" stroke="#7A1F2B" stroke-width="4"/><path d="M5 20 19 12M5 32 19 24M5 44 19 36M5 56 19 48" stroke="#1E4D3F" stroke-width="2"/></svg>
+      <span>Pente Fino</span>
+    </div>
+    <nav aria-label="Principal">
+      <a href="#precos">Preços</a>
+      <a href="#barbeiros">Barbeiros</a>
+      <a href="#agendar">Agendar</a>
+      <a href="#meus">Meus horários</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="abertura" aria-labelledby="titulo">
+      <h1 id="titulo">Barbearia Pente Fino</h1>
+      <p class="abertura__lema">Corte, barba e navalha no capricho. Escolha o barbeiro e o horário em menos de um minuto.</p>
+      <div class="proximo" aria-live="polite">
+        <p class="proximo__rotulo">Próximo horário livre</p>
+        <p class="proximo__valor" id="proximo-valor">Calculando…</p>
+        <button type="button" class="botao" id="proximo-agendar" hidden>Agendar esse horário</button>
+      </div>
+    </section>
+
+    <section id="precos" class="quadro" aria-labelledby="titulo-precos">
+      <div class="quadro__moldura">
+        <h2 id="titulo-precos">Tabela de preços</h2>
+        <ul class="quadro__lista" id="lista-precos"></ul>
+        <p class="quadro__nota">Pagamento no balcão: dinheiro, Pix ou cartão.</p>
+      </div>
+    </section>
+
+    <section id="barbeiros" class="secao" aria-labelledby="titulo-barbeiros">
+      <h2 id="titulo-barbeiros">Barbeiros</h2>
+      <ul class="barbeiros" id="lista-barbeiros"></ul>
+    </section>
+
+    <section id="agendar" class="secao" aria-labelledby="titulo-agendar">
+      <h2 id="titulo-agendar">Agendar horário</h2>
+      <form id="form-agendar" class="agendar" novalidate>
+        <fieldset class="passo">
+          <legend><span class="passo__n">1</span> Serviço</legend>
+          <div class="opcoes" id="opcoes-servico"></div>
+          <p class="erro" id="erro-servico" role="alert"></p>
+        </fieldset>
+
+        <fieldset class="passo">
+          <legend><span class="passo__n">2</span> Barbeiro</legend>
+          <div class="opcoes opcoes--linha" id="opcoes-barbeiro"></div>
+          <p class="erro" id="erro-barbeiro" role="alert"></p>
+        </fieldset>
+
+        <fieldset class="passo">
+          <legend><span class="passo__n">3</span> Dia e horário</legend>
+          <label class="campo">Dia
+            <input type="date" id="campo-data" name="data" required>
+          </label>
+          <p class="dica" id="dica-dia">Abrimos de terça a sábado. Domingo e segunda fechado.</p>
+          <p class="erro" id="erro-data" role="alert"></p>
+          <div class="horarios" id="horarios" aria-live="polite"></div>
+          <p class="erro" id="erro-hora" role="alert"></p>
+        </fieldset>
+
+        <fieldset class="passo">
+          <legend><span class="passo__n">4</span> Seus dados</legend>
+          <label class="campo">Nome
+            <input type="text" id="campo-nome" name="nome" autocomplete="name" required>
+          </label>
+          <p class="erro" id="erro-nome" role="alert"></p>
+          <label class="campo">Celular com DDD
+            <input type="tel" id="campo-telefone" name="telefone" autocomplete="tel" inputmode="tel" placeholder="(11) 91234-5678" required>
+          </label>
+          <p class="erro" id="erro-telefone" role="alert"></p>
+          <label class="aceite">
+            <input type="checkbox" id="campo-consentimento" name="consentimento">
+            Autorizo o uso do meu nome e celular só para este agendamento. Os dados ficam salvos neste navegador.
+          </label>
+          <p class="erro" id="erro-consentimento" role="alert"></p>
+        </fieldset>
+
+        <div class="resumo" id="resumo" aria-live="polite"></div>
+        <button type="submit" class="botao botao--grande">Confirmar agendamento</button>
+      </form>
+
+      <div class="confirmacao" id="confirmacao" tabindex="-1" hidden>
+        <h3>Agendamento confirmado</h3>
+        <p class="confirmacao__codigo">Código <strong id="conf-codigo"></strong></p>
+        <p id="conf-texto"></p>
+        <div class="acoes">
+          <a class="botao" id="conf-ics" download="agendamento-pente-fino.ics">Adicionar ao calendário</a>
+          <a class="botao botao--linha" id="conf-whats" target="_blank" rel="noopener">Compartilhar no WhatsApp</a>
+          <button type="button" class="botao botao--linha" id="conf-novo">Fazer outro agendamento</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="meus" class="secao" aria-labelledby="titulo-meus">
+      <h2 id="titulo-meus">Meus horários</h2>
+      <form id="form-consulta" class="consulta" novalidate>
+        <label class="campo">Celular usado no agendamento
+          <input type="tel" id="consulta-telefone" inputmode="tel" placeholder="(11) 91234-5678">
+        </label>
+        <button type="submit" class="botao">Ver meus horários</button>
+      </form>
+      <p class="erro" id="erro-consulta" role="alert"></p>
+      <ul class="meus" id="lista-meus" aria-live="polite"></ul>
+    </section>
+
+    <section id="onde" class="secao secao--onde" aria-labelledby="titulo-onde">
+      <h2 id="titulo-onde">Onde estamos</h2>
+      <div class="onde">
+        <div>
+          <p id="endereco"></p>
+          <p id="telefone"></p>
+        </div>
+        <table class="expediente" aria-label="Horário de funcionamento">
+          <tbody id="tabela-expediente"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <footer class="rodape">
+    <p>Projeto acadêmico de Ciência da Computação (Uninove, 2026) – Thiago Ferreira Camargo. A Barbearia Pente Fino é fictícia: nomes, preços e endereço são ilustrativos. Os agendamentos ficam salvos apenas no navegador de quem usa o site.</p>
+  </footer>
+
+  <script src="js/dados.js"></script>
+  <script src="js/agenda.js"></script>
+  <script src="js/armazenamento.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

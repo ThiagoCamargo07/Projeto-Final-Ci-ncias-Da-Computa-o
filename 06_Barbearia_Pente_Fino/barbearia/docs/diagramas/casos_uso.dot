@@ -1,0 +1,19 @@
+digraph UC { rankdir=LR; bgcolor=white; nodesep=0.22; ranksep=0.9; fontname="Helvetica";
+node [fontname="Helvetica" fontsize=11]; edge [arrowhead=none color="#333333"];
+cli [shape=none label="👤\nCliente" fontsize=12];
+subgraph cluster_s { label="Site da Barbearia Pente Fino"; style=rounded; color="#1E4D3F"; fontsize=12; fontname="Helvetica";
+ node [shape=ellipse style=filled fillcolor="#E3EFEA" color="#1E4D3F" width=2.7];
+ uc1 [label="UC01 Consultar serviços\ne preços"]; uc2 [label="UC02 Consultar barbeiros"];
+ uc3 [label="UC03 Ver próximo\nhorário livre"]; uc4 [label="UC04 Agendar horário"];
+ uc5 [label="UC05 Verificar\ndisponibilidade"]; uc8 [label="UC08 Adicionar\nao calendário"];
+ uc9 [label="UC09 Compartilhar\nno WhatsApp"]; uc6 [label="UC06 Consultar meus\nagendamentos"];
+ uc7 [label="UC07 Cancelar\nagendamento"]; uc10 [label="UC10 Manter serviços,\nbarbeiros e horários"];
+}
+adm [shape=none label="👤\nDono da barbearia\n(administrador)" fontsize=12];
+cli->uc1; cli->uc2; cli->uc3; cli->uc4; cli->uc6;
+uc10->adm;
+uc4->uc5 [style=dashed arrowhead=vee label="«include»" fontsize=9 fontname="Helvetica" constraint=false];
+uc8->uc4 [style=dashed arrowhead=vee label="«extend»" fontsize=9 fontname="Helvetica" constraint=false];
+uc9->uc4 [style=dashed arrowhead=vee label="«extend»" fontsize=9 fontname="Helvetica" constraint=false];
+uc7->uc6 [style=dashed arrowhead=vee label="«extend»" fontsize=9 fontname="Helvetica" constraint=false];
+}

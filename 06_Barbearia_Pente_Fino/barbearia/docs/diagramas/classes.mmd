@@ -1,0 +1,55 @@
+classDiagram
+direction LR
+class Servico {
+  +string id
+  +string nome
+  +int duracao
+  +decimal preco
+  +string descricao
+}
+class Barbeiro {
+  +string id
+  +string nome
+  +string especialidade
+  +int[] folgas
+  +trabalhaNo(data) bool
+}
+class Expediente {
+  +int diaSemana
+  +string abre
+  +string fecha
+}
+class Cliente {
+  +string nome
+  +string telefone
+}
+class Agendamento {
+  +string codigo
+  +date data
+  +string hora
+  +int duracao
+  +decimal preco
+  +Status status
+  +datetime criadoEm
+  +datetime canceladoEm
+  +podeCancelar(agora) bool
+  +cancelar(agora)
+}
+class Agenda {
+  <<servico>>
+  +horariosDisponiveis(...) string[]
+  +proximoHorarioLivre(...)
+  +validarAgendamento(...)
+  +criarAgendamento(...)
+}
+class Status {
+  <<enumeration>>
+  confirmado
+  cancelado
+}
+Agendamento "0..*" --> "1" Servico : de
+Agendamento "0..*" --> "1" Barbeiro : com
+Agendamento "1" *-- "1" Cliente : para
+Agendamento --> Status
+Agenda ..> Agendamento : cria e valida
+Agenda ..> Expediente : consulta
